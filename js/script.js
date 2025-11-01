@@ -51,7 +51,18 @@ function deleteTodo() {
 
 function filterTodo() {
   let filterDate = document.getElementById("filter-date").value;
+
+  if (!filterDate) {
+    alert("Please select a date to filter tasks!");
+    return;
+  }
+
   let filteredTodos = todoList.filter((todo) => todo.date === filterDate);
+
+  if (filteredTodos.length === 0) {
+    alert("No tasks found for the selected date.");
+  }
+
   renderFilteredTodos(filteredTodos);
 }
 
